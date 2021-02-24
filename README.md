@@ -1,8 +1,10 @@
 ### Run the app
 
-Everything is containerized. So all you need is Docker installed, and then you can run :
+Everything is containerized. So all you need is Docker and Git installed, and then you can run :
 
 ```
+git clone https://github.com/erayerturk/SwordSec-Challenge-Solution.git
+cd SwordSec-Challenge-Solution
 docker-compose up --build
 ```
 
