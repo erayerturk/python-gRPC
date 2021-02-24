@@ -1,0 +1,118 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+
+  grpc_server:
+    build: ./grpc_server
+    env_file:
+      - .env
+    depends_on: 
+      - redis
+
+  grpc_client:
+    build: ./grpc_client
+    env_file:
+      - .env
+    depends_on: 
+      - grpc_server
+
+  json_creator:
+    build: ./json_creater
+    env_file:
+      - .env
+    depends_on: 
+      - redis
+      - worker1
+      - worker2
+      - worker3
+      - worker4
+      - worker5
+      - worker6
+      - worker7
+      - worker8
+      - worker9
+      - worker10
+    volumes: 
+      - ./output:/app/output
+  
+  worker1:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+  
+  worker2:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker3:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker4:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker5:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker6:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker7:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker8:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker9:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
+
+  worker10:
+    build: ./worker
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - grpc_client
